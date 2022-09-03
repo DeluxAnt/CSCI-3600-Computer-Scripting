@@ -6,9 +6,9 @@
 #Updated: 9/3/2022
 ###########           Goals              ###########
 #   1.if no arguments notify missing argumenets and 
-# echo available parameters
+# echo available parameters (DONE)
 #   2.if -d has invalid arguments echo the invalid 
-# argument and echo valid ones
+# argument and echo valid ones 
 #   3.if -d doesnt have any options then echo 'missing
 # argumenets' and echo valid options
 #   4. if -udp, options is selected, it should give
@@ -20,6 +20,14 @@
 #Classwork2.2.sh -u -d 3 -p
 
 weekdays=(filler Sunday Monday Tuesday Wednesday Thurdsay Friday Saturday)
+
+if [ $# -eq 0 ]; then
+    echo "No arguments provided"
+    echo "Accepted arguments: -u -d 'INT' -p"
+    exit 1
+fi
+
+
 
 while [ -n "$1" ]
 do
