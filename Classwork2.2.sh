@@ -21,6 +21,19 @@
 
 weekdays=(filler Sunday Monday Tuesday Wednesday Thurdsay Friday Saturday)
 
+while getopts "up:d:" o; do
+    case "${o}" in
+    u)  u=${OPTARG}
+        echo $USER ;;
+    p)  p=${OPTARG}
+        echo $PWD ;;
+    d) d=${OPTARG}
+        echo "caught" ;;
+    esac
+    shift
+done
+
+
 if [ $# -eq 0 ]; then
     echo "No arguments provided"
     echo "Accepted arguments: -u -d 'INT' -p"
