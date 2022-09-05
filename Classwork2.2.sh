@@ -8,7 +8,7 @@
 #   1.if no arguments notify missing argumenets and 
 # echo available parameters (DONE)
 #   2.if -d has invalid arguments echo the invalid 
-# argument and echo valid ones 
+# argument and echo valid ones  (DONE)
 #   3.if -d doesnt have any options then echo 'missing
 # argumenets' and echo valid options
 #   4. if -udp, options is selected, it should give
@@ -33,9 +33,16 @@ while [ -n "$1" ]
 do
     case "$1" in
         -u) echo $USER ;; 
-        -d) param="$2"
-            weekdays=("${weekdays[$2]}")
-            shift;; 
+        -d) if [[ $2 = *[[:digit:]]* ]];
+            then
+                #is number
+                weekdays=("${weekdays[$2]}")
+            else
+                #not number
+                echo "INVALID ARGUMENT"
+                echo "Valid arugemts '1-7'"
+            fi
+            shift;;
         -p) pwd ;;
     esac
     shift
