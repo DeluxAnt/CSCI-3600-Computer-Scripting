@@ -10,7 +10,7 @@
 #   2.if -d has invalid arguments echo the invalid 
 # argument and echo valid ones  (DONE)
 #   3.if -d doesnt have any options then echo 'missing
-# argumenets' and echo valid options
+# argumenets' and echo valid options (DONE)
 #   4. if -udp, options is selected, it should give
 # out for all the options. Similarly it should respond
 # to all possible options, link -ud, -up, ect.
@@ -33,14 +33,23 @@ while [ -n "$1" ]
 do
     case "$1" in
         -u) echo $USER ;; 
-        -d) if [[ $2 = *[[:digit:]]* ]];
+        -d) if [ -z "$2" ]                                  #tests if empty
+            then
+                echo "MISSING ARGUMENTS"
+                echo "Valid arguments '1-7'"
+                exit 1
+        
+            fi
+
+            if [[ $2 = *[[:digit:]]* ]];                    #tests for digit
             then
                 #is number
                 weekdays=("${weekdays[$2]}")
             else
                 #not number
                 echo "INVALID ARGUMENT"
-                echo "Valid arugemts '1-7'"
+                echo "Valid arguemts '1-7'"
+                exit 1
             fi
             shift;;
         -p) pwd ;;
