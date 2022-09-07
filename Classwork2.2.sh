@@ -9,11 +9,12 @@
 # echo available parameters (DONE)
 #   2.if -d has invalid arguments echo the invalid 
 # argument and echo valid ones  (DONE)
+#   2.5 Int args must be through 1-7 (DONE)
 #   3.if -d doesnt have any options then echo 'missing
 # argumenets' and echo valid options (DONE)
 #   4. if -udp, options is selected, it should give
 # out for all the options. Similarly it should respond
-# to all possible options, link -ud, -up, ect.
+# to all possible options, link -ud, -up, ect. (DONE(but not to spec))
 ####################################################
 
 #!/bin/bash
@@ -21,55 +22,47 @@
 
 weekdays=(filler Sunday Monday Tuesday Wednesday Thurdsay Friday Saturday)
 
-while getopts "up:d:" o; do
-    case "${o}" in
-    u)  u=${OPTARG}
-        echo $USER ;;
-    p)  p=${OPTARG}
-        echo $PWD ;;
-    d) d=${OPTARG}
-        echo "caught" ;;
-    esac
-    shift
+red='\033[0;31m'
+clear='\033[0m'
+min=1
+max=7
+
+while getopts ":d:up" opt; do
+  case $opt in
+    d)
+        #echo "-d was triggered, Parameter: $OPTARG" >&2            #debugging
+        if [[ $OPTARG = *[[:digit:]]* ]] && [ "$OPTARG" -le "$max" ] && [ "$OPTARG" -ge "$min" ];                    #tests for digit and >, <, array limits
+            then
+                #is number
+                echo ${weekdays[$OPTARG]}
+
+            else
+                #not number
+                echo -e "${red}INVALID ARGUMENT${clear}"
+                echo -e "${red}Valid arguemts '1-7'${clear}" 
+            fi
+        shift;;
+    u)
+        echo $USER;;
+    p) 
+        echo $PWD;;
+    
+    \?)
+      echo "Invalid option: -$OPTARG" >&2                   #not sure how to redirect non ints to here
+      exit 1 
+      ;;
+    :)
+      echo -e "${red}Option -$OPTARG requires an argument 1-7.${clear}" >&2
+      exit 1
+      ;;
+  esac
 done
 
-
 if [ $# -eq 0 ]; then
-    echo "No arguments provided"
-    echo "Accepted arguments: -u -d 'INT' -p"
+    echo -e "${red}No arguments provided${clear}"
+    echo -e "${red}Accepted arguments: -u -d 'INT' -p${clear}"
     exit 1
 fi
 
-
-
-while [ -n "$1" ]
-do
-    case "$1" in
-        -u) echo $USER ;; 
-        -d) if [ -z "$2" ]                                  #tests if empty
-            then
-                echo "MISSING ARGUMENTS"
-                echo "Valid arguments '1-7'"
-                exit 1
-        
-            fi
-
-            if [[ $2 = *[[:digit:]]* ]];                    #tests for digit
-            then
-                #is number
-                weekdays=("${weekdays[$2]}")
-            else
-                #not number
-                echo "INVALID ARGUMENT"
-                echo "Valid arguemts '1-7'"
-                exit 1
-            fi
-            shift;;
-        -p) pwd ;;
-    esac
-    shift
-done
-
-echo ${weekdays[$2]}
 
 echo "thank you for using my program"
