@@ -10,6 +10,8 @@
 # 3. Add functionality to place digit for -d anywhere (3 -d -p -u)
 ####################################################
 
+#use line above shift to use arg in getopts to grab number through interation
+
 #!/bin/bash
 #Classwork2.2.sh -u -d 3 -p
 
