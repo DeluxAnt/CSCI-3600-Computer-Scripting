@@ -3,7 +3,7 @@
 #Author: Anthony Vandergriff (VANDERGRIFF@ETSU.EDU)
 #Class: CSCI-3600-001 Computer Scripting
 #Created: 9/3/2022
-#Updated: 9/3/2022
+#Updated: 9/7/2022
 ###########           Goals              ###########
 #   1.if no arguments notify missing argumenets and 
 # echo available parameters (DONE)
