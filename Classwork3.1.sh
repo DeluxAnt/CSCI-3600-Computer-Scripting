@@ -3,11 +3,12 @@
 #Author: Anthony Vandergriff (VANDERGRIFF@ETSU.EDU)
 #Class: CSCI-3600-001 Computer Scripting
 #Created: 9/7/2022
-#Updated: 9/7/2022
+#Updated: 9/12/2022
 ###########           Goals              ###########
 # 1. Add captial case statements for options
 # 2. Add longhand options
 # 3. Add functionality to place digit for -d anywhere (3 -d -p -u)
+# https://www.tutorialspoint.com/unix_commands/getopt.htm
 ####################################################
 
 #use line above shift to use arg in getopts to grab number through interation
