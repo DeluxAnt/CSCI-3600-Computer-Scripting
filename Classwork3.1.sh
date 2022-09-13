@@ -81,69 +81,6 @@ while getopts "$optspec" optchar; do
     esac
 done
 
-
-# VALID_ARGS=$(getopt -o :d:upUP --long :day:,username,print -- "$@")
-
-# eval set -- "$VALID_ARGS"
-# while [ : ]; do
-#   case "$1" in
-#     -d | --day)
-#          #echo "-d was triggered, Parameter: $OPTARG" >&2            #debugging
-#         if [[ $OPTARG = *[[:digit:]]* ]] && [ "$OPTARG" -le "$max" ] && [ "$OPTARG" -ge "$min" ];        #tests for digit and >, <, array limits
-#             then
-#                 #is number
-#                 echo ${weekdays[$OPTARG]}
-
-#             else
-#                 #not number
-#                 echo -e "${red}INVALID ARGUMENT${clear}"
-#                 echo -e "${red}Valid arguemts '1-7'${clear}" 
-#             fi
-#         shift;;
-#     -u | --username)
-#         echo $USER
-#         shift
-#         ;;
-#     -p | --print)
-#         echo $PWD
-#         shift 
-#         ;;
-#     -D)
-#          #echo "-d was triggered, Parameter: $OPTARG" >&2            #debugging
-#         if [[ $OPTARG = *[[:digit:]]* ]] && [ "$OPTARG" -le "$max" ] && [ "$OPTARG" -ge "$min" ];        #tests for digit and >, <, array limits
-#             then
-#                 #is number
-#                 echo ${weekdays[$OPTARG]}
-
-#             else
-#                 #not number
-#                 echo -e "${red}INVALID ARGUMENT${clear}"
-#                 echo -e "${red}Valid arguemts '1-7'${clear}" 
-#             fi
-#         shift;;
-#     -U)
-#         echo $USER
-#         shift
-#         ;;
-#     -P)
-#         echo $PWD
-#         shift 
-#         ;;
-#     ?)
-#       echo "Invalid option: -$OPTARG" >&2                   #not sure how to redirect non ints to here
-#       exit 1 
-#       ;;
-#     :)
-#       echo -e "${red}Option -$OPTARG requires an argument 1-7.${clear}" >&2
-#       exit 1
-#       ;;
-   
-#     --) shift; 
-#         break 
-#         ;;
-#   esac
-# done
-
 if [ $# -eq 0 ]; then
     echo -e "${red}No arguments provided${clear}"
     echo -e "${red}Accepted arguments: -u -d 'INT' -p${clear}"
