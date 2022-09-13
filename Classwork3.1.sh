@@ -8,6 +8,7 @@
 # 1. Add captial case statements for options (DONE)
 # 2. Add longhand options (DONE)
 # 3. Add functionality to place digit for -d anywhere (3 -d -p -u)
+# https://www.tutorialspoint.com/unix_commands/getopt.htm
 ####################################################
 
 #use line above shift to use arg in getopts to grab number through interation
