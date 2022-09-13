@@ -1,16 +1,20 @@
 ####################################################
-#Filename: Classwork3.1.sh
+#Filename: Classwork4.1.sh
 #Author: Anthony Vandergriff (VANDERGRIFF@ETSU.EDU)
 #Class: CSCI-3600-001 Computer Scripting
-#Created: 9/7/2022
+#Created: 9/12/2022
 #Updated: 9/12/2022
 ###########           Goals              ###########
-# 1. Add captial case statements for options (DONE)
-# 2. Add longhand options (DONE)
+# 1. Write you previous program with minimal number of statements.
+# 2. You are not allowed to use similar statements multiple times.
+# 3. If there is any one of the option is invalid, you should not display 
+#    valid options. For example if the options pdi since i is invalid, you 
+#    should not display answer for p and d. should not be any valid answers.
+# 4. At least 8 different types of error codes
 # 3. Add functionality to place digit for -d anywhere (3 -d -p -u)
 ####################################################
 
-#use line above shift to use arg in getopts to grab number through interation
+#use line above shift to use arg in getopts to grab number through interation (prof pic related)
 
 #!/bin/bash
 #Classwork2.2.sh -u -d 3 -p
@@ -30,7 +34,7 @@ while getopts "$optspec" optchar; do
                 day)
                     val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
                     echo -e "Parsing option: '--${OPTARG}', value: '${red}error${clear}${val}'" >&2;
-                    echo -e "${red}-ERROR CODE 3-${clear}"
+                    echo -e "${red}-ERROR CODE 3-${clear}"                                                      #ERROR CODE 3
                     echo -e "${red}Usage: --day <INT>${clear}"
                     echo -e "${red}INT range: 1-7${clear}"
                     exit 5;
@@ -67,14 +71,14 @@ while getopts "$optspec" optchar; do
 
             else
                 #not number
-                echo -e "${red}-ERROR CODE 1-${clear}"
+                echo -e "${red}-ERROR CODE 1-${clear}"                                                      #ERROR CODE 1
                 echo -e "${red}INVALID ARGUMENT: Valid arguemts '1-7'${clear}" 
             fi
             shift;;
     
         *)
             if [ "$OPTERR" != 1 ] || [ "${optspec:0:1}" = ":" ]; then #catches if d has no int need to fix
-                echo -e "${red}-ERROR CODE 2-${clear}"
+                echo -e "${red}-ERROR CODE 2-${clear}"                                                      #ERROR CODE 2
                 echo -e "${red}Non-option argument: '-${OPTARG}'${clear}" >&2
             fi
             ;;
@@ -82,6 +86,7 @@ while getopts "$optspec" optchar; do
 done
 
 if [ $# -eq 0 ]; then
+    echo -e "${red}-ERROR CODE 4-${clear}"                                                                  #ERROR CODE 4
     echo -e "${red}No arguments provided${clear}"
     echo -e "${red}Accepted arguments: -u -d 'INT' -p${clear}"
     exit 1
