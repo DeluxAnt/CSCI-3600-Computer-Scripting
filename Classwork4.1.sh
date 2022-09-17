@@ -26,29 +26,34 @@ clear='\033[0m'
 min=1
 max=7
 
+U=0
+P=0
+D=0
+error=0
+index=0
+
+errorstring="-ERROR CODE"
+
 optspec=":upd:-:"
 while getopts "$optspec" optchar; do
     case "${optchar}" in
         -)
             case "${OPTARG}" in
                 day)
-                    val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
-                    echo -e "Parsing option: '--${OPTARG}', value: '${red}error${clear}${val}'" >&2;
-                    echo -e "${red}-ERROR CODE 3-${clear}"                                                      #ERROR CODE 3
-                    echo -e "${red}Usage: --day <INT>${clear}"
-                    echo -e "${red}INT range: 1-7${clear}"
-                    exit 5;
+                    ((D+=1))
+                #    val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
+                #    echo "Parsing option: '--${OPTARG}', value: '${val}'" >&2;
                     ;;
-                day=*)
-                    val=${OPTARG#*=}
-                    opt=${OPTARG%=$val}
-                    echo "Parsing option: '--${opt}', value: '${val}'" >&2
-                    ;;
+                #day=*)
+                #    val=${OPTARG#*=}
+                #    opt=${OPTARG%=$val}
+                #    echo "Parsing option: '--${opt}', value: '${val}'" >&2
+                #    ;;
                 username)
-                    echo $USER
+                    ((U+=1))
                     ;;
                 print)
-                    echo $PWD
+                    ((P+=1))
                     ;;
                 *)
                     if [ "$OPTERR" = 1 ] && [ "${optspec:0:1}" != ":" ]; then
@@ -57,12 +62,13 @@ while getopts "$optspec" optchar; do
                     ;;
             esac;;
         u)
-            echo $USER
+            ((U+=1))
             ;;
         p)
-            echo $PWD
+            ((P+=1))
             ;;
         d)
+            ((D+=1))
              #echo "-d was triggered, Parameter: $OPTARG" >&2            #debugging
             if [[ $OPTARG = *[[:digit:]]* ]] && [ "$OPTARG" -le "$max" ] && [ "$OPTARG" -ge "$min" ];        #tests for digit and >, <, array limits
             then
@@ -85,12 +91,35 @@ while getopts "$optspec" optchar; do
     esac
 done
 
-if [ $# -eq 0 ]; then
-    echo -e "${red}-ERROR CODE 4-${clear}"                                                                  #ERROR CODE 4
-    echo -e "${red}No arguments provided${clear}"
-    echo -e "${red}Accepted arguments: -u -d 'INT' -p${clear}"
-    exit 1
+if [ $D -eq 1 ]; then
+    echo ${weekdays[$OPTARG]}
 fi
 
+if [ $U -eq 1 ]; then
+    echo $USER
+elif [ $U -gt 1 ]; then 
+    error=7
+fi
+
+if [ $P -eq 1 ]; then
+    echo $PWD
+elif [ $P -gt 1 ]; then
+    error=6
+fi
+
+if [ $# -eq 0 ]; then
+   error=4
+fi
+
+case $error in
+    1) echo $errorstring" 1-"$'\n'"INVALID ARGUMENT: Valid arguemts '1-7'"; exit 1;;
+    2) echo $errorstring" 2-"$'\n'"Non-option argument"; exit 1;;
+    3) echo $errorstring" 3-"$'\n'"Usage: --day <INT>"$'\n'"INT range: 1-7"; exit 1;;
+    4) echo $errorstring" 4-"$'\n'"No arguments provided"$'\n'""; exit 1;;
+    5) echo $errorstring" 5-"$'\n'"Accepted arguments: -u -d 'INT' -p"; exit 1;;
+    6) echo $errorstring" 6-"$'\n'"More than one type of -p used"; exit 1;;
+    7) echo $errorstring" 7-"$'\n'"More than one type of -u used"; exit 1;;
+    8) echo $errorstring" 8-"$'\n'""; exit 1;;
+esac
 
 echo "thank you for using my program"
