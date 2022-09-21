@@ -23,21 +23,21 @@ weekdays=(filler Sunday Monday Tuesday Wednesday Thurdsay Friday Saturday)
 
 red='\033[0;31m'
 clear='\033[0m'
-min=1
-max=7
+min=1 ; max=7
 
-U=0 ; P=0 ; D=0 ; error=0 ; index=0
+U=0 ; P=0 ; D=0 ; error=0 ; index=0, days=0
 
 errorstring="-ERROR CODE"
+optspec=":updUPD1234567:-:"
 
-optspec=":upd:-:"
 while getopts "$optspec" optchar; do
-    echo ${optchar} | tr 'A-Z' 'a-z'            #doesnt take uppercase letters
-    case "${optchar}" in
-        -)
+    optchar=$( echo ${optchar} | tr 'A-Z' 'a-z' )        #doesnt take uppercase letters for longhand
+    case "$optchar" in
+        -) 
+        OPTARG=$( echo ${OPTARG} | tr 'A-Z' 'a-z')
             case "${OPTARG}" in
                 day)
-                    ((D+=1));;
+                    ((D+=1)) ;;
                 username)
                     ((U+=1));;
                 print)
@@ -48,29 +48,17 @@ while getopts "$optspec" optchar; do
         p)
             ((P+=1));;
         d)
-            ((D+=1));;
-             #echo "-d was triggered, Parameter: $OPTARG" >&2            #debugging
-            #if [[ $OPTARG = *[[:digit:]]* ]] && [ "$OPTARG" -le "$max" ] && [ "$OPTARG" -ge "$min" ];        #tests for digit and >, <, array limits
-            #then
-            #    #is number
-            #    echo ${weekdays[$OPTARG]}
-            #
-            #else
-            #    #not number
-            #    echo -e "${red}-ERROR CODE 1-${clear}"                                                      #ERROR CODE 1
-            #    echo -e "${red}INVALID ARGUMENT: Valid arguemts '1-7'${clear}" 
-            #fi
-            #shift
-    
+            ((D+=1));;   
+        [1-7]) 
+           days=$optchar;;
         *)
             if [ "$OPTERR" != 1 ] || [ "${optspec:0:1}" = ":" ]; then                                       #catches if d has no int need to fix
                 echo -e "${red}-ERROR CODE 2-${clear}"                                                      #ERROR CODE 2
                 echo -e "${red}Non-option argument: '-${OPTARG}'${clear}" >&2
-            fi
-            ;;
+            fi;;
     esac
 done
-
+echo $days
 if [ $U -eq 1 ]; then
     echo $USER
 elif [ $U -gt 1 ]; then 
@@ -83,17 +71,13 @@ elif [ $P -gt 1 ]; then
     error=6
 fi
 
-if [ $D -eq 1 ]; then
+if [ $D -eq 1 -a $days -eq 0 ]; then
     for var in $*; do
         if [[ $var = *[[:digit:]]* ]] && [ "$var" -le "$max" ] && [ "$var" -ge "$min" ];        #skips over other flags ((-d -p 1) p doesnt work)
             then
                 #is number
-                echo ${weekdays[$var]}              
-
-            #else
-                #not number
-            #   error=1
-        fi
+                days=$var
+          fi
     done
 elif [ $D -gt 1 ]; then         #doesnt hit when more than one d 
     error=8
@@ -114,4 +98,5 @@ case $error in
     8) echo $errorstring" 8-"$'\n'"More than one tyoe if -d used"; exit 1;;
 esac
 
+[ $days -gt 0 -a $D == 1 ] &&echo ${weekdays[$days]}   
 echo "thank you for using my program"
