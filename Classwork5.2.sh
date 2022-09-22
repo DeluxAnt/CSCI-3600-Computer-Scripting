@@ -4,6 +4,7 @@
 #Class: CSCI-3600-001 Computer Scripting
 #Created: 9/21/2022
 #Updated: 9/21/2022
+####################################################
 #!/bin/bash
 inet=$(ifconfig | grep -i "inet ")
 inet6=$(ifconfig | grep -i "inet6")
