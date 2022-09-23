@@ -8,6 +8,7 @@
 #!/bin/bash
 inet=$(ifconfig | grep -i "inet ")
 inet6=$(ifconfig | grep -i "inet6")
+inetchange=$(ifconfig | grep -i -c "inet ")
 echo "IPv4 Addresses:"
 echo "$inet"
 echo "IPv6 Addresses"
