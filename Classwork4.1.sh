@@ -58,7 +58,6 @@ while getopts "$optspec" optchar; do
             fi;;
     esac
 done
-echo $days
 if [ $U -eq 1 ]; then
     echo $USER
 elif [ $U -gt 1 ]; then 
