@@ -3,7 +3,7 @@
 #Author: Anthony Vandergriff (VANDERGRIFF@ETSU.EDU)
 #Class: CSCI-3600-001 Computer Scripting
 #Created: 9/12/2022
-#Updated: 9/12/2022
+#Updated: 9/23/2022
 ###########           Goals              ###########
 # 1. Write you previous program with minimal number of statements. (DONE?)
 # 2. You are not allowed to use similar statements multiple times. (DONE)
