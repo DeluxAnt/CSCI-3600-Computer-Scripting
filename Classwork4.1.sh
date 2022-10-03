@@ -3,15 +3,15 @@
 #Author: Anthony Vandergriff (VANDERGRIFF@ETSU.EDU)
 #Class: CSCI-3600-001 Computer Scripting
 #Created: 9/12/2022
-#Updated: 9/12/2022
+#Updated: 9/23/2022
 ###########           Goals              ###########
-# 1. Write you previous program with minimal number of statements.
-# 2. You are not allowed to use similar statements multiple times.
+# 1. Write you previous program with minimal number of statements. (DONE?)
+# 2. You are not allowed to use similar statements multiple times. (DONE)
 # 3. If there is any one of the option is invalid, you should not display 
 #    valid options. For example if the options pdi since i is invalid, you 
 #    should not display answer for p and d. should not be any valid answers.
 # 4. At least 8 different types of error codes 
-# 3. Add functionality to place digit for -d anywhere (3 -d -p -u)
+# 3. Add functionality to place digit for -d anywhere (3 -d -p -u) (DONE)
 ####################################################
 
 #use line above shift to use arg in getopts to grab number through interation (prof pic related)
