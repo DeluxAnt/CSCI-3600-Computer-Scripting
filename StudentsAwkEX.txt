@@ -12,13 +12,3 @@ Hayden Hurst
     Scripting   90
     Chemistry   87
     Spanish     92
-
-Nabeela Wiggins
-    Scripting   75
-    Engineering 69
-    Algorithms  88
-
-Kuba Goulding
-    Scripting   88
-    Manufacturing 93
-    Hardware    50
