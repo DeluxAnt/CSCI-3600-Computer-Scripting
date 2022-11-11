@@ -19,32 +19,29 @@ echo "Image Size: $hight x $width"
 declare -A matrix
 num_rows=$hight
 num_columns=$width
-
-function Pdataloop {
-    
-}
+RbgPixelValue=$(convert $1 -format "%[pixel:p{$i,$j}]" info: | awk 'BEGIN { FS = "b"} ; {print $2}')
 
 
-for ((i=1;i<=num_rows;i++)) do
-    for ((j=1;j<=num_columns;j++)) do
-        matrix[$i,$j]=$RANDOM
+for ((i=0;i<=$hight;i++)) do
+    for ((j=0;j<=$width;j++)) do
+        matrix[$i,$j]=$RbgPixelValue
     done
 done
 
-f1="%$((${#num_rows}+1))s"
+f1="%$((${#hight}+1))s"
 f2=" %9s"
 
 printf "$f1" ''
-for ((i=1;i<=num_rows;i++)) do
+for ((i=1;i<=$hight;i++)) do
     printf "$f2" $i
 done
 echo
 
 
-#for ((j=1;j<=num_columns;j++)) do      ###TRANSPOSOES MATRIX###
-#    printf "$f1" $j
-#   for ((i=1;i<=num_rows;i++)) do
-#       printf "$f2" ${matrix[$i,$j]}
-#   done
-#  echo
-#done
+for ((j=1;j<=$width;j++)) do      ###TRANSPOSOES MATRIX###
+    printf "$f1" $j
+   for ((i=1;i<=$hight;i++)) do
+       printf "$f2" ${matrix[$i,$j]}
+   done
+  echo
+done
