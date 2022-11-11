@@ -19,6 +19,7 @@ echo "Image Size: $hight x $width"
 declare -A matrix
 num_rows=$hight
 num_columns=$width
+
 RbgPixelValue=$(convert $1 -format "%[pixel:p{$i,$j}]" info: | awk 'BEGIN { FS = "b"} ; {print $2}')
 
 

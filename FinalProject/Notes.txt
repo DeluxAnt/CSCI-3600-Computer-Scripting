@@ -8,6 +8,7 @@ https://linuxhint.com/simulate-bash-array-of-arrays/
  - Create a way to create and popluate a 2d array with the info 
  - use loop using image dimensions to get every pixel info
  - Fill matrix by printing landscape line by line like images from 1999
+ - add logic to diferentiate srbg(jpg) & srbga(png)
 
  FUN FACT: Bash doesnt support 2d arrays so they have to be simulated 
   - implementation complexity
