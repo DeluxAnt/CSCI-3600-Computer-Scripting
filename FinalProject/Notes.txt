@@ -1,6 +1,7 @@
 https://robertheaton.com/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
 http://www.imagemagick.org/script/escape.php
 https://linuxhint.com/simulate-bash-array-of-arrays/
+https://stackoverflow.com/questions/16487258/how-to-declare-2d-array-in-bash
 
 
  convert bandit.jpg -format "%[pixel:p{75,20}]" info: | awk 'BEGIN { FS = "b"} ; {print $2}'
@@ -9,6 +10,7 @@ https://linuxhint.com/simulate-bash-array-of-arrays/
  - use loop using image dimensions to get every pixel info
  - Fill matrix by printing landscape line by line like images from 1999
  - add logic to diferentiate srbg(jpg) & srbga(png)
+ - Convert RBG tuples into brightness tuples using (R+G+B)/3 
 
  FUN FACT: Bash doesnt support 2d arrays so they have to be simulated 
   - implementation complexity
@@ -16,3 +18,6 @@ https://linuxhint.com/simulate-bash-array-of-arrays/
   - sparse arrays
   - complex and fragile syntax
   - separator escaping
+
+
+  sed 's/.//;s/.$//' #trims starting character and ending character
