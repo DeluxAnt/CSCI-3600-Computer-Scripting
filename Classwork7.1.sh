@@ -8,9 +8,9 @@ for (i=0; ++i <= NF;){
         total += score[n]
     }
 }
-average =+ total/3
+average += total/3
 printf "%15s %7.2f\n", studentname, total/3
 }
 END { printf "\n%30s %4d", "Total Number of Students: ", NR
       printf "\n%30s %5.2f\n", "Average of all Students: ", average/NR
-}' StudentsAwkEX.txt
+}' students.txt

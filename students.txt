@@ -1,0 +1,24 @@
+John Doe 
+Scripting 60 
+Cloud Computing 75 
+Data Structure 89
+
+Danniella Jacobs
+Scripting 60 
+Cloud Computing 75 
+Data Structure 89
+
+Miyah Sheldon
+Scripting 60 
+Cloud Computing 75 
+Data Structure 89
+
+Fleur Reed
+Scripting 60 
+Cloud Computing 75 
+Data Structure 89
+
+Susie Rogers
+Scripting 60 
+Cloud Computing 75 
+Data Structure 89
