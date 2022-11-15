@@ -2,6 +2,7 @@ https://robertheaton.com/2018/06/12/programming-projects-for-advanced-beginners-
 http://www.imagemagick.org/script/escape.php
 https://linuxhint.com/simulate-bash-array-of-arrays/
 https://stackoverflow.com/questions/16487258/how-to-declare-2d-array-in-bash
+http://www.imagemagick.org/script/command-line-options.php#format_identify_
 
 
  convert bandit.jpg -format "%[pixel:p{75,20}]" info: | awk 'BEGIN { FS = "b"} ; {print $2}'
