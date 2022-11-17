@@ -19,7 +19,7 @@ echo "Image Size: $hight x $width"
 
 for ((i=0;i<=hight;i++)) do
     for ((j=0;j<=width;j++)) do
-        RbgPixelValue=$(convert $1 -format "%[pixel:p{$i,$j}]" info: | awk 'BEGIN { FS = "b"} ; {print $2}')    #much faster outside of loop (optimization)
+        RbgPixelValue=$(convert $1 -format "%[pixel:p{$i,$j}]" info: | awk 'BEGIN { FS = "b"} ; {print $2}' | sed 's/,/+/g')    #much faster outside of loop (optimization)
         matrix[$i,$j]=$RbgPixelValue
     done
 done
@@ -27,9 +27,8 @@ done
 
 for ((i=0;i<=hight;i++)) do
     for ((j=0;j<=width;j++)) do
-        average=$(${matrix[$i,$j]} | sed 's/^\|,/+/g')
-        averageSum=$(($average/3))
-        ${matrix[$i,$j]}=$averageSum
+        averageSum=$((${matrix[$i,$j]}/3))                       #adds and divides rbg tuples by 3 to get average
+        ${matrix[$i,$j]}=$averageSum                     #overwrites indexes with average value
     done
 done
 
