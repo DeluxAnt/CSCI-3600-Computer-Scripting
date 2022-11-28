@@ -9,6 +9,8 @@
 #!/bin/bash
 declare -A matrix
 
+map='`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'
+
 #add image valididity check and error code
 
 size=$(identify $1 | awk '{print $3}')      #outputs 000x000, need to get hight/width variables
