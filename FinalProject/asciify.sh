@@ -9,6 +9,8 @@
 #!/bin/bash
 declare -A matrix
 
+map='`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'
+
 #add image valididity check and error code
 
 size=$(identify $1 | awk '{print $3}')      #outputs 000x000, need to get hight/width variables
@@ -17,18 +19,25 @@ width=$(echo $size | awk 'BEGIN { FS = "x" } ; { print $2 }')
 echo 'Successfully loaded image!'
 echo "Image Size: $hight x $width"
 
+test=${matrix[$i,$j]}
+
 for ((i=0;i<=hight;i++)) do
     for ((j=0;j<=width;j++)) do
         RbgPixelValue=$(convert $1 -format "%[pixel:p{$i,$j}]" info: | awk 'BEGIN { FS = "b"} ; {print $2}' | sed 's/,/+/g')    #much faster outside of loop (optimization)
         matrix[$i,$j]=$RbgPixelValue
+        tupleSum=$(( ${matrix[$i,$j]} ))
+        averageSum=$(( $tupleSum / 3 ))                       #adds and divides rbg tuples by 3 to get average
+        test="$averageSum"                    #overwrites indexes with average value
+       
     done
 done
 
 
 for ((i=0;i<=hight;i++)) do
-    for ((j=0;j<=width;j++)) do
-        averageSum=$((${matrix[$i,$j]}/3))                       #adds and divides rbg tuples by 3 to get average
-        ${matrix[$i,$j]}=$averageSum                     #overwrites indexes with average value
+   for ((j=0;j<=width;j++)) do
+#    averageSum=$(( ${matrix[$i,$j]} / 3 ))
+    
+    echo $test
     done
 done
 
