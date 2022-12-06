@@ -1,24 +1,16 @@
-John Doe 
-Scripting 60 
-Cloud Computing 75 
-Data Structure 89
+John Doe, BS in Computer Science, Fall 2022
+CSCI-3600 Computer Scripting 85 3
+CSCI-4657 Cloud Computing 90 3
+CSCI-3500 Computer Information System 95 3
 
-Danniella Jacobs
-Scripting 60 
-Cloud Computing 75 
-Data Structure 89
+Steeve Allee, BS in CSMN, Spring 2021
+CSCI-3600 Computer Scripting 87 3
+CSCI-4507 Computer Forensics 96 3
+CSCI-3500 Computer Information System 71 3
+CSCI-4607 Information Risk Management 85 3
 
-Miyah Sheldon
-Scripting 60 
-Cloud Computing 75 
-Data Structure 89
-
-Fleur Reed
-Scripting 60 
-Cloud Computing 75 
-Data Structure 89
-
-Susie Rogers
-Scripting 60 
-Cloud Computing 75 
-Data Structure 89
+Robert James, BS in CSMN, Spring 2023
+CSCI-4507 Computer Forensics 96 3
+CSCI-3600 Computer Scripting 82 3
+CSCI-3500 Computer Information System 67 3
+CSCI-4607 Information Risk Management 97 3
