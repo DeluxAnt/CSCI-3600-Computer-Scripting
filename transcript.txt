@@ -1,5 +1,24 @@
-John Doe, CSCI 3400, Scripting, 60, 3, CSCI 4600, Cloud Computing, 75, 3, CSCI 3500, Information Security, 89, 3
-Danniella Jacobs, CSCI 3400, Scripting, 60, CSCI 4600, Cloud Computing, 75, CSCI 3500, Information Security, 89, 3
-Miyah Sheldon, CSCI 3400, Scripting, 60, CSCI 4600, Cloud Computing, 75, CSCI 3500, Information Security, 89, 3
-Fleur Reed, CSCI 3400, Scripting, 60, CSCI 4600, Cloud Computing, 75, CSCI 3500, Information Security, 89, 3
-Susie Rogers, CSCI 3400, Scripting, 60, CSCI 4600, Cloud Computing, 75, CSCI 3500, Information Security, 89, 3
+John Doe,BS in CSMN,Fall 2022
+CSCI 3400,Scripting,60,3
+CSCI 4600,Cloud Computing,75,3
+CSCI 3500,Information Security,89,3
+
+Danniella Jacobs,BS in CSMN,Fall 2022
+CSCI3400,Scripting,60,3
+CSCI4600,Cloud Computing,75,3
+CSCI3500,Information Security,89,3
+
+Miyah Sheldon,BS in CSMN,Fall 2022
+CSCI 3400,Scripting,60,3
+CSCI 4600,Cloud Computing,75,3 
+CSCI 3500,Information Security,89,3
+
+Fleur Reed,BS in CSMN,Fall 2022 
+CSCI 3400,Scripting,60,3 
+CSCI 4600,Cloud Computing,75,3 
+CSCI 3500,Information Security,89,3
+
+Susie Rogers,BS in CSMN,Fall 2022 
+CSCI 3400,Scripting,60,3 
+CSCI 4600,Cloud Computing,75,3 
+CSCI 3500,Information Security,89,3
