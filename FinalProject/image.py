@@ -69,7 +69,7 @@ def main():
     welcomeString = "Welcome to asciify.py"
     flagReader = argparse.ArgumentParser(description=welcomeString)
 
-    flagReader.add_argument('--file', dest='inFile', required=True)
+    flagReader.add_argument('-f', dest='inFile', required=True)
     flagReader.add_argument('--out', dest='outFile', required=False)
     flagReader.add_argument('--greyLevel',dest='greyLevel',action='store_true')
 
