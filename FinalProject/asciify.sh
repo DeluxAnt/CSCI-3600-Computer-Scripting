@@ -33,13 +33,13 @@ for ((i=0;i<=hight;i++)) do
 done
 
 
-for ((i=0;i<=hight;i++)) do
-   for ((j=0;j<=width;j++)) do
+#for ((i=0;i<=hight;i++)) do
+#   for ((j=0;j<=width;j++)) do
 #    averageSum=$(( ${matrix[$i,$j]} / 3 ))
-    
-    echo $test
-    done
-done
+#    
+#    echo $test
+#    done
+#done
 
 f1="%$((${#hight}+1))s"
 f2=" %9s"
