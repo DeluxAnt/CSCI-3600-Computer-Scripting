@@ -6,8 +6,18 @@
 #   BrightRidge's ONTs
 ####################################################
 
+import colorsys
 import wmi
 import ctypes, sys
+import time
+
+# selenium 4
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.edge.service import Service as EdgeService
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+
 
 def is_admin():
     try:
@@ -43,7 +53,36 @@ if is_admin():
     nic.SetGateways(DefaultIPGateway=[gateway])
     print(nic.IpAddress[0])
     input("Press Enter to continue...")
+
+#    if nic.IpAddress[0] == '192.168.100.100':
+    driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
+    driver.get(r"C:\Users\Bryce\Documents\python\Scripts\BrightRidge\SmartActivate.html")            #http://192.168.100.100
+
+    # select id name where the redID input box is
+    form = driver.find_element("id", 'regidObj').send_keys(numID)
+    if form.get_attribute('value') == numID:
+        print("Reg ID entered SUCCESSFULLY")
+    else:
+        raise NameError('Reg ID not entered Successfully')
+
+
+    button = driver.find_element("id", 'apply_btn')
+    button.click()
+
+
+
+
+
+#    time.sleep(10)
+#    exit
+
+    
    
 else:
     # Re-run the program with admin rights
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+
+
+
+
+
